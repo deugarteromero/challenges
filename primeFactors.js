@@ -9,19 +9,14 @@ function findSmallestPrimeFactor(number){
         counter++;
     };
 
-    return 1;
+    return number;
 };
 
 function findPrimeFactors(number){
     let primeFactors = [];
     while(number > 1){
         smallestPrimeFactor = findSmallestPrimeFactor(number);
-        if(smallestPrimeFactor === 1){
-            primeFactors.push(number);
-            break;
-        } else {
-            primeFactors.push(smallestPrimeFactor);
-        };
+        primeFactors.push(smallestPrimeFactor);
         number /= smallestPrimeFactor;
     };
 
