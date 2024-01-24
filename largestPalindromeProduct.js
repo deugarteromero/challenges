@@ -1,24 +1,21 @@
 //Find Largest Palindrome in a 2 Three Digit Product
 function findLargestPalindromeProduct(){
-    let upperbound = 999;
-    let status = 1;
-    while(upperbound > 900){
-        console.log(upperbound);
-        if(status){
-            let result = isPalindrome(upperbound * upperbound);
+    let largestPalindrome = 0;
+    let number1 = 999;
+    while(number1 > 99){
+        let number2 = 999;
+        while(number2 > 99){
+            let product = number1 * number2;
+            let result = isPalindrome(product);
             if(result){
-                return upperbound * upperbound;
+                largestPalindrome = product > largestPalindrome ? product : largestPalindrome;
             };
-            status = 0;
-        } else {
-            let result = isPalindrome((upperbound - 1) * upperbound);
-            if(result){
-                return upperbound - 1 * upperbound;
-            };
-            status = 1;
-            upperbound -= 1;
-        }
+            number2--;
+        };
+        number1--;
     };
+
+    return largestPalindrome;
 };
 
 function isPalindrome(number){
@@ -36,7 +33,6 @@ function isPalindrome(number){
         };
     };
 };
-
 
 //TEST(S)
 console.log(findLargestPalindromeProduct()); //Return: 906609
